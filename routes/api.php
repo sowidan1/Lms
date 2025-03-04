@@ -13,7 +13,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 // *-------------------PROTECTED ROUTES-------------------*
 
-Route::middleware('jwt-auth')->group(function () {
+Route::middleware('auth:api')->group(function () {
 
     Route::post('/logout', [AuthController::class, 'logout']);
 
