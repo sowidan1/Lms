@@ -16,15 +16,16 @@ class Course extends Model
         'instructor_id',
     ];
 
-    CONST ACTIVE_STATUS = 'active';
+    const ACTIVE_STATUS = 'active';
+    const INACTIVE_STATUS = 'inactive';
 
     public function instructor()
     {
         return $this->belongsTo(User::class, 'instructor_id');
     }
 
-    public function subscribers()
+    public function subscriptions()
     {
-        return $this->belongsToMany(User::class, 'subscriptions');
+        return $this->hasMany(Subscription::class, 'course_id');
     }
 }

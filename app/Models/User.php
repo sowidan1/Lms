@@ -15,6 +15,8 @@ class User extends Authenticatable implements JWTSubject
     use HasUlids;
 
     const ROLE_ADMIN = 'admin';
+    const ROLE_INSTRUCTOR = 'instructor';
+    const ROLE_STUDENT = 'student';
 
     protected $fillable = [
         'name',
@@ -24,15 +26,20 @@ class User extends Authenticatable implements JWTSubject
         'stripe_customer_id'
     ];
 
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class, 'user_id');
+    }
+
     public function courses()
     {
-        return $this->belongsToMany(Course::class, 'subscriptions')
-            ->withPivot('stripe_subscription_id', 'status', 'ends_at');
+        return $this->hasManyThrough(Course::class, Subscription::class, 'user_id', 'id', 'id', 'course_id')
+            ->where('subscriptions.status', Course::ACTIVE_STATUS);
     }
 
     public function isAdmin()
     {
-        return $this->role === SELF::ROLE_ADMIN;
+        return $this->role === self::ROLE_ADMIN;
     }
 
     public function hasRole($role)
