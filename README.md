@@ -22,20 +22,6 @@ cp .env.example .env
 ## Prerequisites
 - put variables needed in .env
 
-```bash
-MAIL_MAILER=smtp
-MAIL_HOST=smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=ossowidan@gmail.com
-MAIL_PASSWORD=haxkvkfxsatvqbnx
-MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=ossowidan@gmail.com
-MAIL_FROM_NAME=LMS
-
-STRIPE_KEY=pk_test_51Qz2A6KzGTHIcKrhWUnfnF73x0cmtlJCFCKBvNLuA5LR5NypUrBySTh6lT1NrUOGZNRzdy9K3LXE423LNeGlXOvn00zMJd26kX
-STRIPE_SECRET=sk_test_51Qz2A6KzGTHIcKrhOTs1D07TnGWJnyDUNjghgGMPDrNn7idYP47VOi3WfME4jAsAUAPk4y4AnZv7zR1HfIpN6s1300nDDfQzdM
-STRIPE_WEBHOOK_SECRET=whsec_469542dc6de05111f8b71a4ff38e3c220ffef7eb0e3cfe205163929dc584c79d
-```
 
 ## 3. Install Dependencies
 ```bash
